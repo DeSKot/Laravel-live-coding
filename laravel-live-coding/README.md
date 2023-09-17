@@ -1,62 +1,98 @@
 
 ## About Project
 
-THis Laravel project for laravel-live-coding testing. 
+THis Laravel project for laravel-live-coding testing.
+You have to do 3 task here using your knowledge of PHP / Laravel / DB and best-practise (SOLID)
 
-I prepared few steps to install this project on your PC.
+### Our Stack
+1. PHP 8.0
+2. Laravel Framework 9.52.15
+3. Postgresql 16.0
+4. Docker
+5. NGINX (http://127.0.0.1:8010/api/)
+
+##### I prepared few steps to install this project on your PC (Linux).
+- git clone https://github.com/DeSKot/Laravel-live-coding
+- add .env file and cope data from .env.example
 - docker-compose up
 - docker exec -it laravel-live-coding bash
 - composer install
 - php artisan migrate
 
-## What you have to do!
+## Task 1. Display Info about users and his wallets
 
+#### 1. Create branch from main and call it like that "yourName-task-numberOfTask": "Dima-task-1"
 
+#### 2. Create table *_"users"_* with follow requirements
+| id      | name | email | phone | photo |
+|---------|------|-------|-------|-------|
+1. name = required / max-size = 256
+2. email = required / uniq / max-size = 512
+3. phone = can be null / max-size = 32
+4. photo = max-size = 1024 / default value = https://d3jqtupnzefbtn.cloudfront.net/andersenlab/new-andersensite/testimonials/60x60/without-photo.png
+#### 3. Create table *_"currencies"_* with follow data inside and requirements
+| id | name | 
+|----|------|
+| 1  | USD  |
+| 2  | EUR  |
+1. name - required / uniq / max-size = 4
+#### 4. Create table *_wallets_* with follow requirements
+| id      | amount | user_id | currency_id |
+|---------|--------|---------|-------------|
+1. amount - required
+2. user_id - user id
+3. currency_id - currency id
 
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+#### 5. Write in this tables some information 
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+#### 6. Create end-point /user where you display info in following structure
 
-## Learning Laravel
+[
+{
+"name": "Dima",
+"email": "@gmail.com",
+"phone": "+38000000000",
+"photo": "https://d3jqtupnzefbtn.cloudfront.net/andersenlab/new-andersensite/testimonials/60x60/without-photo.png",
+"wallets": [
+{
+"currency": "USD",
+"amount": 12321314124134e312321
+},
+{
+"currency": "EUR",
+"amount": 12321314124134e312321
+}
+]
+},
+{
+"name": "Mariya",
+"email": "@gmail.com",
+"phone": "+3800312300000",
+"photo": "https://d3jqtupnzefbtn.cloudfront.net/andersenlab/new-andersensite/testimonials/60x60/without-photo.png",
+"wallets": [
+{
+"currency": "USD",
+"amount": 12321314124134e312321
+},
+{
+"currency": "EUR",
+"amount": 12321314124134e312321
+}
+]
+}
+]
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+#### 7. push this branch to remount repo and create Merge Request
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Task 2. Transaction between wallets
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+First of all you have to have created two users with wallet USD currency for each user
 
-## Laravel Sponsors
+**TO DO: Do transaction between wallets.**<br>
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+That all description, you have to come up with logic and realisation.<br>
+We will check how you can translate Owner task into code
 
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Useful Commands
+grep -w '5432/tcp' /etc/services - check which service using this port
+sudo systemctl stop <service-name> - stop /start / restart / status of the service
