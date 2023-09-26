@@ -10,6 +10,7 @@ You have to do 3 task here using your knowledge of PHP / Laravel / DB and best-p
 3. Postgresql 16.0
 4. Docker
 5. NGINX (http://127.0.0.1:8010/api/)
+6. RabbitMQ (http://127.0.0.1:15672/) credentials(user user)  <a href="https://www.rabbitmq.com/tutorials/tutorial-one-php.html">Tutorial</a>
 
 ##### I prepared few steps to install this project on your PC (Linux).
 - git clone https://github.com/DeSKot/Laravel-live-coding
