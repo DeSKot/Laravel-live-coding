@@ -20,3 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/', [\App\Http\Controllers\TestRabbitController::class, 'index']);
 Route::get('/rec', [\App\Http\Controllers\TestRabbitController::class, 'receive']);
+Route::get('/reviews', [\App\Http\Controllers\ReviewsController::class, 'reviews']);
